@@ -1,9 +1,9 @@
 from django.urls import path
-from . import views
+from .views import BaleList
 
 urlpatterns =[
-    path('bales/',views.bale_list),
-    path('bales/<int:pk>/', views.bale_detail)    
+    path('bales/',BaleList.as_view()),
+    # path('bales/<int:pk>/', views.bale_detail)    
 ]
 
 
