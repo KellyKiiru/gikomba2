@@ -19,7 +19,7 @@ class Bale(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'{self.code} - code'
+        return f' {self.clothe_type} - {self.code}'
     
     class Meta:
         ordering = ['created']
