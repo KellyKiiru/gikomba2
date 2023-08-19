@@ -1,44 +1,46 @@
-from django.http import HttpResponse, JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.parsers import JSONParser
+
+from rest_framework.parsers import Parser
+from rest_framework.decorators import api_view, APIView
+from rest_framework.response import Response
+from rest_framework import status
+
+
 from bales.models import Bale
 from bales.serializers import BaleSerializer
 
-
-@csrf_exempt
-def bale_list(request):
-    if request.method == 'GET':
+class BaleList(APIView):
+    """
+    List all bales or create a new bale.
+    """
+    def get(self, request, format=None):
         bales = Bale.objects.all()
         serializer = BaleSerializer(bales, many=True)
-        return JsonResponse(serializer.data, safe=False)
+        return Response(serializer.data)
 
-    elif request.method == 'POST':
-        data = JSONParser().parse(request)
-        serializer = BaleSerializer(data=data)
+    def post(self, request, format=None):
+        serializer = BaleSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return JsonResponse(serializer.data)
-        return JsonResponse(serializer.errors)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+class BaleDetail(APIView):
     
-@csrf_exempt
-def bale_detail(request,pk):
-    try:
-        bale = Bale.objects.get(pk=pk)
-    except Bale.DoesNotExist:
-        return HttpResponse(status=404)
-    
-    if request.method == 'GET':
-        serializer = BaleSerializer(Bale)
-        return JsonResponse(serializer.data)
-    
-    elif request.method == 'PUT':
-        data = JSONParser().parse(request)
-        serializer = BaleSerializer(Bale, data=data)
+    def get(self,pk, request, format=None):
+        bale = Bale.objects.get(pk)
+        serializer = BaleSerializer(bale, many=True)
         if serializer.is_valid():
             serializer.save()
-            return JsonResponse(serializer.data)
-        return JsonResponse(serializer.errors, status=400)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    elif request.method == 'DELETE':
-        Bale.delete()
-        return HttpResponse(status=204)
+    def put(self,pk, request, format=None):
+        bale = Bale.objects.get(pk)
+        serializer = BaleSerializer(bale, many=True)
+
+    def delete(self,pk, request, format=None):
+        bale = Bale.objects.get(pk)
+        bale.delete()
+        return Response(status=status.HTTP_404_NOT_FOUND)
