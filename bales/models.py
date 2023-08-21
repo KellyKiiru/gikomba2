@@ -23,3 +23,9 @@ class Bale(models.Model):
     
     class Meta:
         ordering = ['created']
+
+class Store(models.Model):
+    store_name = models.CharField(max_length=100)
+    bale_origin = models.CharField(max_length=100)
+    store_owner = models.CharField(max_length=100)
+    bale_weight = models.DecimalField(default=40, max_digits=3, decimal_places=1)
