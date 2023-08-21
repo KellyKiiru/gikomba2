@@ -11,4 +11,7 @@ class BaleSerializer(serializers.ModelSerializer):
 
         return Bale.objects.create(**validated_data)
     
-    
+class StoreSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Store
+        fields = ['store_name', 'bale_origin', 'store_owner', 'bale_weight']
