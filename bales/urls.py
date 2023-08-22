@@ -10,7 +10,7 @@ bale_detail = BaleViewSet({
     'get':'retrieve',
     'put':'update',
     'patch':'partial_update',
-    'delete':'destroy'
+    'delete':'destroy',
 })
 
 store_list = StoreViewSet({
