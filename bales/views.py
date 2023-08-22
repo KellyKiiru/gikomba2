@@ -13,8 +13,8 @@ class BaleViewSet(viewsets.ReadOnlyModelViewSet):
     
     queryset = Bale.objects.all()
     serializer_class = BaleSerializer
-    
 
-class StoreViewSet(viewsets.ReadOnlyModelViewSet):
+
+class StoreViewSet(viewsets.ModelViewSet):
     queryset = Store.objects.all()
     serializer_class = StoreSerializer
