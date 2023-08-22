@@ -6,11 +6,26 @@ bale_list = BaleViewSet.as_view({
     'post':'create'
 })
 
+bale_detail = BaleViewSet({
+    'get':'retrieve',
+    'put':'update',
+    'patch':'partial_update',
+    'delete':'destroy'
+})
+
+store_list = StoreViewSet({
+    'get':'list'
+})
+
+store_detail = StoreViewSet({
+    'get':'retrieve'
+})
+
 urlpatterns =[
     path('bales/',bale_list),
-    path('bales/<int:pk>/',BaleDetail.as_view()),
-    path('stores/',StoreList.as_view()),
-    path('stores/<int:pk>/',StoreDetail.as_view()),
+    path('bales/<int:pk>/',bale_detail),
+    path('stores/',store_list),
+    path('stores/<int:pk>/',store_detail),
 ]
 
 
