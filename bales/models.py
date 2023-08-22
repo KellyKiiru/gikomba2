@@ -29,3 +29,9 @@ class Store(models.Model):
     bale_origin = models.CharField(max_length=100)
     store_owner = models.CharField(max_length=100)
     bale_weight = models.DecimalField(default=40, max_digits=3, decimal_places=1)
+
+class Wholesaler(models.Model):
+    wholesaler_name=models.CharField(max_length=100)
+    country_origin = models.CharField(max_length=100)
+    weight_classes = models.DecimalField(max_digits=5, decimal_places=1)
+    
