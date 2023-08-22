@@ -24,8 +24,7 @@ store_detail = StoreViewSet({
 urlpatterns =[
     path('bales/',bale_list,name='bale_list'),
     path('bales/<int:pk>/',bale_detail,name='bale_detail'),
-    path('stores/',store_list),
-    path('stores/<int:pk>/',store_detail),
+    path('stores/',store_list,name='store_list'),
 ]
 
 
