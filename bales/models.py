@@ -24,14 +24,24 @@ class Bale(models.Model):
     class Meta:
         ordering = ['created']
 
-class Store(models.Model):
-    store_name = models.CharField(max_length=100)
-    bale_origin = models.CharField(max_length=100)
-    store_owner = models.CharField(max_length=100)
-    bale_weight = models.DecimalField(default=40, max_digits=3, decimal_places=1)
+# class Store(models.Model):
+#     store_name = models.CharField(max_length=100)
+#     bale_origin = models.CharField(max_length=100)
+#     store_owner = models.CharField(max_length=100)
+#     bale_weight = models.DecimalField(default=40, max_digits=3, decimal_places=1)
 
-class Wholesaler(models.Model):
-    wholesaler_name=models.CharField(max_length=100)
-    country_origin = models.CharField(max_length=100)
-    weight_classes = models.DecimalField(max_digits=5, decimal_places=1)
+# class Wholesaler(models.Model):
+#     wholesaler_name=models.CharField(max_length=100)
+#     country_origin = models.CharField(max_length=100)
+#     weight_classes = models.DecimalField(max_digits=5, decimal_places=1)
+
+# class Transport(models.Model):
+#     vehicle_type = models.CharField(max_length=100)
+#     destination = models.CharField(max_length=50)
+#     bale_weight = models.CharField(max_length=100)
+
+# class Bank(models.Model):
+#     name = models.CharField(max_length=100)
+#     branch = models.CharField(max_length=100)
+#     products = models.Choices(Bale)
     
