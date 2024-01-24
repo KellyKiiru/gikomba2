@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'rest_framework',
+    
+    
     'bales',
     'corsheaders'
 ]
@@ -71,15 +73,15 @@ WSGI_APPLICATION = 'gikomba.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.environ["NAME"],
-#         'USER': os.environ["USER"],
-#         'PASSWORD': os.environ["PASSWORD"],
-#         'PORT': os.environ["PORT"]
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ["NAME"],
+        'USER': os.environ["USER"],
+        'PASSWORD': os.environ["PASSWORD"],
+        'PORT': os.environ["PORT"]
+    }
+}
 
 
 # Password validation
